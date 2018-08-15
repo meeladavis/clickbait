@@ -4,7 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-filename = 'C:\\Users\meela\Documents\dev\clickbait\clickdata.csv'
+#filename = 'C:\\Users\meela\Documents\dev\clickbait\clickdata.csv'
+filename = '/Users/meeladavis/Python/pythonscripts/cb/clickdata.csv'
+
 
 #TODO: Add dtype
 clickdata =  pd.read_csv(filename,sep=',',skiprows=1, names = ['ID_ENTRY','ID_USER','ID_CONVERSATION','ID_EXPERIMENT','DATE_EVENT','FLAG_JAVA_ENABLED','TEXT_ACTION_DATA','TEXT_ACTION_TYPE','TEXT_APPLICATION_NAME','TEXT_APPLICATION_VERSIO','TEXT_EVENT_DATA','TEXT_EVENT_TYPE','TEXT_EXPERIMENT_VARIANT','TEXT_FLASH_VERSION','TEXT_IP_ADDRESS','TEXT_OPERATING_SYSTEM','TEXT_PROTOCOL_VERSION','TEXT_REFERRER','TEXT_SCREEN_NAME','TEXT_SCREEN_RESOLUTION','TEXT_URL','TEXT_USER_AGENT','TEXT_VIEW_PORT_SIZE'])
@@ -17,8 +19,23 @@ users = clickdata_np[:,1]
 print("Total number of users: " + str(len(users)))
 print(users)
 
-sns.distplot( a=users, hist=True, kde=False, rug=False )
-sns.plt.show()
+
+#clean the uA from the users before doing a distplot (so that we have floats)
+users_clean = users.lstrip(2)
+print(users[0])
+#violin plot
+#sns.violinplot(data=users)
+#plt.show()
+
+#violin plot, single data point
+
+#sns.catplot('myplot', data=users, kind='count')
+#plt.show()
+
+
+#Distribution / histogram plot
+#sns.distplot( users )
+#sns.plt.show()
 
 
 #count of unique users from 'users' array
