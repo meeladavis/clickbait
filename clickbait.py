@@ -21,8 +21,21 @@ print(users)
 
 
 #clean the uA from the users before doing a distplot (so that we have floats)
-users_clean = users.lstrip(2)
-print(users[0])
+i=0
+cleanusers = np.array(users)
+cleanusers_db = np.array(users)
+
+for user in users:
+    cleanusers[i] = user[2:]
+    cleanusers_db[i] = user[:2]
+#    print(user)
+#    print(cleanusers[i])
+#    print(cleanusers_db[i])
+    i = i + 1
+
+print("Total number of 'clean' users: " + str(len(cleanusers)))
+
+
 #violin plot
 #sns.violinplot(data=users)
 #plt.show()
@@ -34,13 +47,32 @@ print(users[0])
 
 
 #Distribution / histogram plot
-#sns.distplot( users )
+#sns.distplot( cleanusers )
 #sns.plt.show()
 
 
 #count of unique users from 'users' array
 uniqueusers=list(dict.fromkeys(users))
 print("Total number of unique users: " + str(len(uniqueusers)))
+
+
+
+#Number of datasets
+
+unique_dbs=list(dict.fromkeys(cleanusers_db))
+print("Total number of unique datasets: " + str(len(unique_dbs)))
+#print(np.bincount(cleanusers_db))
+cleanusers_db_freq = np.array(pd.Series(cleanusers_db).value_counts())
+
+
+from collections import Counter
+db_count = np.array(Counter(cleanusers_db))
+print(db_count)
+#print([[x,unique_dbs.count(x)] for x in set(cleanusers_db)])
+
+#catplot
+sns.catplot(data=cleanusers_db_freq)
+plt.show()
 
 #Browser / OS
 #browser_moz =
