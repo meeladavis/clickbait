@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-filename = 'C:\\Users\meela\Documents\dev\clickbait\clickdata.csv'
-#filename = '/Users/meeladavis/Python/pythonscripts/cb/clickdata.csv'
+#filename = 'C:\\Users\meela\Documents\dev\clickbait\clickdata.csv'
+filename = '/Users/meeladavis/Python/pythonscripts/cb/clickdata.csv'
 
 
 #TODO: Add dtype
