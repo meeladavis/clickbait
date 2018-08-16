@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#filename = 'C:\\Users\meela\Documents\dev\clickbait\clickdata.csv'
-filename = '/Users/meeladavis/Python/pythonscripts/cb/clickdata.csv'
+filename = 'C:\\Users\meela\Documents\dev\clickbait\clickdata.csv'
+#filename = '/Users/meeladavis/Python/pythonscripts/cb/clickdata.csv'
 
 
 #TODO: Add dtype
@@ -34,7 +34,8 @@ for user in users:
     i = i + 1
 
 print("Total number of 'clean' users: " + str(len(cleanusers)))
-
+print(cleanusers_db)
+sns.distplot(cleanusers_db)
 
 #violin plot
 #sns.violinplot(data=users)
@@ -61,14 +62,13 @@ print("Total number of unique users: " + str(len(uniqueusers)))
 
 unique_dbs=list(dict.fromkeys(cleanusers_db))
 print("Total number of unique datasets: " + str(len(unique_dbs)))
-#print(np.bincount(cleanusers_db))
-cleanusers_db_freq = np.array(pd.Series(cleanusers_db).value_counts())
-
+#cleanusers_db_freq = np.array(pd.Series(cleanusers_db).value_counts())
+#print(cleanusers_db_freq)
 
 from collections import Counter
 db_count = np.array(Counter(cleanusers_db))
 print(db_count)
-#print([[x,unique_dbs.count(x)] for x in set(cleanusers_db)])
+
 
 #catplot
 sns.catplot(data=cleanusers_db_freq)
